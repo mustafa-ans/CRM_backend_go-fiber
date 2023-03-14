@@ -3,16 +3,17 @@ package main
 import (
 	"fmt"
 	"github.com/Mustafa-ans/go-fibre/lead"
-	"github.com/Mustafa-ans/go-fibre/database"
-	"github.com/gofiber/fiber"
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	"github.com/gofiber/fiber"
+	"github.com/Mustafa-ans/go-fibre/database"
 )
 
 func setupRoutes(app *fiber.App){
 	app.Get("/api/v1/lead",lead.GetLeads)
-	app.Get("/api/v1/lead/:id"lead.GetLead)
-	app.Post("/api/v1/lead"lead.Newlead)
-	app.Delete("/api/v1/lead:id"lead.DeleteLead)
+	app.Get("/api/v1/lead/:id",lead.GetLead)
+	app.Post("/api/v1/lead",lead.Newlead)
+	app.Delete("/api/v1/lead:id",lead.DeleteLead)
 
 }
 
